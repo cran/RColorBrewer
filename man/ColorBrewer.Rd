@@ -1,13 +1,19 @@
 \name{ColorBrewer}
 \alias{brewer.pal}
 \alias{display.brewer.pal}
+\alias{display.brewer.all}
 \title{ColorBrewer palettes}
 \description{Creates nice looking color palettes especially for thematic maps}
 \usage{brewer.pal(n, name)
-display.brewer.pal(n, name)}
+display.brewer.pal(n, name)
+display.brewer.all(n=NULL, type="all", select=NULL, exact.n=TRUE)
+}
 \arguments{
 \item{n}{Number of different colors in the palette, minimum 3, maximum depending on palette}
 \item{name}{A palette name from the lists below}
+\item{type}{One of the string "div", "qual", "seq", or "all" }
+\item{select}{A list of names of existing palettes}
+\item{exact.n}{If TRUE, only display palettes with a color number given by n}
 }
 
 \details{
@@ -15,6 +21,8 @@ display.brewer.pal(n, name)}
 available as R palettes.
 
 \code{display.brewer.pal} displays the selected palette in a graphics window.
+
+\code{display.brewer.all} displays the a few palettes simultanueously in a graphics window.
 
 
 For details and an interactive palette selection tools see http://colorbrewer.org.
@@ -113,12 +121,29 @@ Sys.sleep(2)
 ## display a qualitative palette
 display.brewer.pal(7,"Accent")
 Sys.sleep(2)
+## display a palettes simultanoeusly
+display.brewer.all(n=10, exact.n=FALSE)
+Sys.sleep(2)
+display.brewer.all(n=10)
+Sys.sleep(2)
+display.brewer.all()
+Sys.sleep(2)
+display.brewer.all(type="div")
+Sys.sleep(2)
+display.brewer.all(type="seq")
+Sys.sleep(2)
+display.brewer.all(type="qual") 
+Sys.sleep(2)
+display.brewer.all(n=5,type="div",exact.n=TRUE)
 }
 
 
 
 \author{Erich Neuwirth, University of Vienna,
-\email{erich.neuwirth@univie.ac.at}}
+\email{erich.neuwirth@univie.ac.at}, with contributions by
+John Maindonald, Australian National University,
+\email{john.maindonald@anu.edu.au}
+}
 \value{A palette
 \cr
 You will get an error when you ask for a nonexisting palette,
