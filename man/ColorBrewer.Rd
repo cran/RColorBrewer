@@ -14,7 +14,7 @@ display.brewer.pal(n, name)}
 \code{brewer.pal} makes the color palettes from ColorBrewer
 available as R palettes.
 
-\code{display.brewer.pal} displays the selected palette in a grahics window.
+\code{display.brewer.pal} displays the selected palette in a graphics window.
 
 
 For details and an interactive palette selection tools see http://colorbrewer.org.

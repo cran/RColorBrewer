@@ -6,7 +6,7 @@ brewer.pal<-function(n,name){
    "PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr")
    namelist<-c(divlist,quallist,seqlist)
    if(!(name %in% namelist)){
-   error(paste(name,"is not a valid palette name for brewer.pal\n"))
+   stop(paste(name,"is not a valid palette name for brewer.pal\n"))
    }   
    if(n<3){ 
    warning("minimal value for n is 3, returning requested palette with 3 different levels\n")
@@ -894,7 +894,7 @@ display.brewer.pal<-function(n,name){
    "PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr")
    namelist<-c(divlist,quallist,seqlist)
    if(!(name %in% namelist)){
-   error(paste(name,"is not a valid palette name for brewer.pal\n"))
+   stop(paste(name,"is not a valid palette name for brewer.pal\n"))
    }   
    if(n<3){ 
    warning("minimal value for n is 3, displaying requested palette with 3 different levels\n")
