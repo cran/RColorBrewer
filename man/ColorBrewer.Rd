@@ -2,6 +2,7 @@
 \alias{brewer.pal}
 \alias{display.brewer.pal}
 \alias{display.brewer.all}
+\alias{brewer.pal.info}
 \title{ColorBrewer palettes}
 \description{Creates nice looking color palettes especially for thematic maps}
 \usage{brewer.pal(n, name)
@@ -23,6 +24,8 @@ available as R palettes.
 \code{display.brewer.pal} displays the selected palette in a graphics window.
 
 \code{display.brewer.all} displays the a few palettes simultanueously in a graphics window.
+
+\code{brewer.all.info} returns information about the available palettes as a dataframe.
 
 
 For details and an interactive palette selection tools see http://colorbrewer.org.
@@ -64,7 +67,7 @@ Reds
 YlGn
 YlGnBu
 YlOrBr
-
+YlOrRd
 
 All the sequential palettes are available in variations from 3 different values up to 9 different values.
 
@@ -135,6 +138,10 @@ Sys.sleep(2)
 display.brewer.all(type="qual") 
 Sys.sleep(2)
 display.brewer.all(n=5,type="div",exact.n=TRUE)
+Sys.sleep(2)
+brewer.pal.info
+brewer.pal.info["Blues",]
+brewer.pal.info["Blues",]$maxcolors
 }
 
 

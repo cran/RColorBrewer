@@ -1,10 +1,21 @@
-brewer.pal<-function(n,name){
-   sizes<-c(11,11,11,11,11,11,11,11,11,8,8,12,9,8,9,8,12,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9)
    divlist<-c("BrBG","PiYG","PRGn","PuOr","RdBu","RdGy","RdYlBu","RdYlGn","Spectral")
    quallist<-c("Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
    seqlist<-c("Blues","BuGn","BuPu","GnBu","Greens","Greys","Oranges","OrRd",
-   "PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr")
+   	"PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr","YlOrRd")
+
+   divnum <- rep(11, length(divlist))
+   qualnum <- c( 8, 8, 12, 9, 8, 9, 8, 12)
+   seqnum <- rep(9, length(seqlist))
+
    namelist<-c(divlist,quallist,seqlist)
+   maxcolors <- c(divnum,qualnum,seqnum)
+   catlist<-rep(c("div","qual","seq"),c(length(divlist),length(quallist),length(seqlist)))
+
+   brewer.pal.info<-data.frame(maxcolors=maxcolors,category=catlist,row.names=namelist)
+
+
+
+brewer.pal<-function(n,name){
    if(!(name %in% namelist)){
    stop(paste(name,"is not a valid palette name for brewer.pal\n"))
    }   
@@ -12,10 +23,10 @@ brewer.pal<-function(n,name){
    warning("minimal value for n is 3, returning requested palette with 3 different levels\n")
    return(brewer.pal(3,name))
    }
-   if(n>sizes[which(name==namelist)]){
-   warning(paste("n too large, allowed maximum for palette",name,"is",sizes[which(name==namelist)]),
+   if(n>maxcolors[which(name==namelist)]){
+   warning(paste("n too large, allowed maximum for palette",name,"is",maxcolors[which(name==namelist)]),
         "\nReturning the palette you asked for with that many colors\n")
-   return(brewer.pal(sizes[which(name==namelist)],name))
+   return(brewer.pal(maxcolors[which(name==namelist)],name))
    }
    
    switch(name,        
@@ -885,14 +896,6 @@ brewer.pal<-function(n,name){
 }                        
 
 display.brewer.pal<-function(n,name){
-   sizes<-c(11,11,11,11,11,11,11,11,11,
-            8,8,12,9,8,9,8,12,
-            9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9)
-   divlist<-c("BrBG","PiYG","PRGn","PuOr","RdBu","RdGy","RdYlBu","RdYlGn","Spectral")
-   quallist<-c("Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
-   seqlist<-c("Blues","BuGn","BuPu","GnBu","Greens","Greys","Oranges","OrRd",
-   "PuBu","PuBuGn","PuRd","Purples","RdPu","Reds","YlGn","YlGnBu","YlOrBr")
-   namelist<-c(divlist,quallist,seqlist)
    if(!(name %in% namelist)){
    stop(paste(name,"is not a valid palette name for brewer.pal\n"))
    }   
@@ -900,10 +903,10 @@ display.brewer.pal<-function(n,name){
    warning("minimal value for n is 3, displaying requested palette with 3 different levels\n")
    return(display.brewer.pal(3,name))
    }
-   if(n>sizes[which(name==namelist)]){
-   warning(paste("n too large, allowed maximum for palette",name,"is",sizes[which(name==namelist)]),
+   if(n>maxcolors[which(name==namelist)]){
+   warning(paste("n too large, allowed maximum for palette",name,"is",maxcolors[which(name==namelist)]),
         "\nDisplaying the palette you asked for with that many colors\n")
-   return(display.brewer.pal(sizes[which(name==namelist)],name))
+   return(display.brewer.pal(maxcolors[which(name==namelist)],name))
    }
 
 
@@ -918,19 +921,9 @@ display.brewer.pal<-function(n,name){
 display.brewer.all <-
     function (n=NULL, type="all", select=NULL, exact.n=TRUE)
 {
-    library(RColorBrewer)
-    divlist <- c("BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy",
-                 "RdYlBu", "RdYlGn", "Spectral")
-    quallist <- c("Accent", "Dark2", "Paired", "Pastel1", "Pastel2",
-                  "Set1", "Set2", "Set3")
-    seqlist <- c("Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys",
-                 "Oranges", "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples",
-                 "RdPu", "Reds", "YlGn", "YlGnBu", "YlOrBr")
     gaplist <- ""
+
     totallist <- c(divlist, gaplist, quallist,gaplist, seqlist)
-    divnum <- rep(11, length(divlist))
-    qualnum <- c( 8, 8, 12, 9, 8, 9, 8, 12)
-    seqnum <- rep(9, length(seqlist))
     gapnum <- max(c(divnum,qualnum,seqnum))
     totnum <- c(divnum, gapnum, qualnum, gapnum, seqnum)
     if (!(type %in% c("div","qual","seq","all"))) {
@@ -963,7 +956,7 @@ display.brewer.all <-
     }
     if (any(n < 3) | exact.n & any(n>maxnum)|
         length(n)!=length(colorlist)){
-        warning("Illegal vector of sizes")
+        warning("Illegal vector of color numbers")
         print(paste(n, collapse=" "))
     }
     n[n<3] <- 3
@@ -984,3 +977,4 @@ display.brewer.all <-
  }
     text(rep(-0.1,nr),(1:nr)-0.6, labels=colorlist, xpd=TRUE, adj=1)
 }
+
