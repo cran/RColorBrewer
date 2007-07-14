@@ -1,8 +1,13 @@
-\name{ColorBrewer}
+\name{RColorBrewer}
 \alias{brewer.pal}
 \alias{display.brewer.pal}
 \alias{display.brewer.all}
 \alias{brewer.pal.info}
+\alias{brewer}
+\alias{colors}
+\alias{ColorBrewer}
+\alias{RColorBrewer}
+\alias{brewer.all}
 \title{ColorBrewer palettes}
 \description{Creates nice looking color palettes especially for thematic maps}
 \usage{brewer.pal(n, name)
