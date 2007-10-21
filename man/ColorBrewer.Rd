@@ -149,6 +149,12 @@ brewer.pal.info["Blues",]
 brewer.pal.info["Blues",]$maxcolors
 }
 
+\value{A palette
+\cr
+You will get an error when you ask for a nonexisting palette,
+and you will get a warning if a palette you asked for exists
+but not with as many different leves as you asked for. 
+}
 
 
 \author{Erich Neuwirth, University of Vienna,
@@ -156,10 +162,9 @@ brewer.pal.info["Blues",]$maxcolors
 John Maindonald, Australian National University,
 \email{john.maindonald@anu.edu.au}
 }
-\value{A palette
-\cr
-You will get an error when you ask for a nonexisting palette,
-and you will get a warning if a palette you asked for exists
-but not with as many different leves as you asked for. 
-}
 \keyword{color}
+
+\note{More information on ColorBrewer is available at its Website, 
+\url{http://www.colorbrewer.org}.
+
+}
