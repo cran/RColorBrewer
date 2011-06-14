@@ -11,8 +11,9 @@
    maxcolors <- c(divnum,qualnum,seqnum)
    catlist<-rep(c("div","qual","seq"),c(length(divlist),length(quallist),length(seqlist)))
 
-   brewer.pal.info<-data.frame(maxcolors=maxcolors,category=catlist,row.names=namelist)
-
+brewer.all.info <- function(){
+	data.frame(maxcolors=maxcolors,category=catlist,row.names=namelist)
+}
 
 
 brewer.pal<-function(n,name){

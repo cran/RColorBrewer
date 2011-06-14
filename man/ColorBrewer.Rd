@@ -2,7 +2,7 @@
 \alias{brewer.pal}
 \alias{display.brewer.pal}
 \alias{display.brewer.all}
-\alias{brewer.pal.info}
+\alias{brewer.all.info}
 \alias{brewer}
 \alias{colors}
 \alias{ColorBrewer}
@@ -13,6 +13,7 @@
 \usage{brewer.pal(n, name)
 display.brewer.pal(n, name)
 display.brewer.all(n=NULL, type="all", select=NULL, exact.n=TRUE)
+brewer.all.info()
 }
 \arguments{
 \item{n}{Number of different colors in the palette, minimum 3, maximum depending on palette}
@@ -144,9 +145,9 @@ display.brewer.all(type="qual")
 Sys.sleep(2)
 display.brewer.all(n=5,type="div",exact.n=TRUE)
 Sys.sleep(2)
-brewer.pal.info
-brewer.pal.info["Blues",]
-brewer.pal.info["Blues",]$maxcolors
+brewer.all.info()
+brewer.all.info()["Blues",]
+brewer.all.info()["Blues",]$maxcolors
 }
 
 \value{A palette
