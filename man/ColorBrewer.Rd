@@ -2,7 +2,7 @@
 \alias{brewer.pal}
 \alias{display.brewer.pal}
 \alias{display.brewer.all}
-\alias{brewer.all.info}
+\alias{brewer.pal.info}
 \alias{brewer}
 \alias{colors}
 \alias{ColorBrewer}
@@ -13,7 +13,7 @@
 \usage{brewer.pal(n, name)
 display.brewer.pal(n, name)
 display.brewer.all(n=NULL, type="all", select=NULL, exact.n=TRUE)
-brewer.all.info()
+brewer.pal.info
 }
 \arguments{
 \item{n}{Number of different colors in the palette, minimum 3, maximum depending on palette}
@@ -27,11 +27,12 @@ brewer.all.info()
 \code{brewer.pal} makes the color palettes from ColorBrewer
 available as R palettes.
 
-\code{display.brewer.pal} displays the selected palette in a graphics window.
+\code{display.brewer.pal()} displays the selected palette in a graphics window.
 
-\code{display.brewer.all} displays the a few palettes simultanueously in a graphics window.
+\code{display.brewer.all()} displays the a few palettes simultanueously in a graphics window.
 
-\code{brewer.all.info} returns information about the available palettes as a dataframe.
+\code{brewer.pal.info} returns information about the available palettes as a dataframe.
+\code{brewer.pal.info} is not a function, it is a variable. This might change in the future.
 
 
 For details and an interactive palette selection tools see http://colorbrewer.org.
@@ -145,9 +146,9 @@ display.brewer.all(type="qual")
 Sys.sleep(2)
 display.brewer.all(n=5,type="div",exact.n=TRUE)
 Sys.sleep(2)
-brewer.all.info()
-brewer.all.info()["Blues",]
-brewer.all.info()["Blues",]$maxcolors
+brewer.pal.info
+brewer.pal.info["Blues",]
+brewer.pal.info["Blues",]$maxcolors
 }
 
 \value{A palette
