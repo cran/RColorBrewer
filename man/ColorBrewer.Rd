@@ -12,15 +12,18 @@
 \description{Creates nice looking color palettes especially for thematic maps}
 \usage{brewer.pal(n, name)
 display.brewer.pal(n, name)
-display.brewer.all(n=NULL, type="all", select=NULL, exact.n=TRUE)
+display.brewer.all(n=NULL, type="all", select=NULL, exact.n=TRUE, 
+colorblindFriendly=FALSE)
 brewer.pal.info
 }
 \arguments{
-\item{n}{Number of different colors in the palette, minimum 3, maximum depending on palette}
+\item{n}{Number of different colors in the palette, minimum 3, 
+maximum depending on palette}
 \item{name}{A palette name from the lists below}
 \item{type}{One of the string "div", "qual", "seq", or "all" }
 \item{select}{A list of names of existing palettes}
 \item{exact.n}{If TRUE, only display palettes with a color number given by n}
+\item{colorblindFriendly}{if TRUE, display only colorblind friendly palettes}
 }
 
 \details{
@@ -124,28 +127,29 @@ For license details see the file \code{COPYING} included in this package.
 mypalette<-brewer.pal(7,"Greens")
 image(1:7,1,as.matrix(1:7),col=mypalette,xlab="Greens (sequential)",
        ylab="",xaxt="n",yaxt="n",bty="n")
-Sys.sleep(2)
 ## display a divergent palette
 display.brewer.pal(7,"BrBG")
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 ## display a qualitative palette
 display.brewer.pal(7,"Accent")
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 ## display a palettes simultanoeusly
 display.brewer.all(n=10, exact.n=FALSE)
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 display.brewer.all(n=10)
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 display.brewer.all()
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 display.brewer.all(type="div")
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 display.brewer.all(type="seq")
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 display.brewer.all(type="qual") 
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
 display.brewer.all(n=5,type="div",exact.n=TRUE)
-Sys.sleep(2)
+devAskNewPage(ask=TRUE)
+display.brewer.all(colorblindFriendly=TRUE)
+devAskNewPage(ask=TRUE)
 brewer.pal.info
 brewer.pal.info["Blues",]
 brewer.pal.info["Blues",]$maxcolors
